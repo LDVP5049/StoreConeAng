@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANTIDAD | MERMAS</title>
+</head>
+<app-herramientas></app-herramientas>
+<body>
+    <div class="chart-container">
+        <h2>CANTIDAD | MERMAS</h2>
+        <div class="chart">
+            <div *ngFor="let merma of conteoMermas; let i=index" class="bar" [style.height]="merma.cantidad * 10 + 'px'" [style.backgroundColor]="merma.color"></div>
+        </div>
+    </div>
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #ff6347;"></div>
+            <span class="legend-text">Robo</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #4682b4;"></div>
+            <span class="legend-text">Caducidad</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-color" style="background-color: #32cd32;"></div>
+            <span class="legend-text">Defectuoso</span>
+        </div>
+    </div>
+</body>
+</html>

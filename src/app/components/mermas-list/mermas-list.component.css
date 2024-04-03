@@ -1,0 +1,48 @@
+.tablita-prod {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+table {
+  width: 90%;
+  margin: 20px auto; /* Centrar la tabla horizontalmente */
+  border-collapse: collapse;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: center; /* Centrar el texto horizontalmente */
+  vertical-align: middle; /* Centrar el contenido verticalmente */
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+img {
+  height: 60px;
+  width: auto;
+  display: block;
+  margin: 60;
+}
+
+.btn-eliminar {
+
+  background-color: red;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 10px 10px 0px 0px;
+  cursor: pointer;
+  border-radius: 15px;
+}

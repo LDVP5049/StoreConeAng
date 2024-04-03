@@ -1,0 +1,42 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  .logo {
+    font-size: 24px;
+  }
+  
+  .menu {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu li {
+    margin-right: 20px;
+  }
+  
+  .menu li:last-child {
+    margin-right: auto; 
+  }
+  
+  .menu li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s; 
+  }
+  
+  .menu li a.active {
+    font-weight: bold;
+  }
+  
+  .menu li a:hover {
+    color: #ff0; 
+  }
+  

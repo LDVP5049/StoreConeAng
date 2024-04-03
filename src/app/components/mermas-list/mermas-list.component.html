@@ -1,0 +1,21 @@
+<app-herramientas></app-herramientas>
+<table class="tablita-prod">
+  <thead>
+    <tr>
+     <th>Codigo</th>
+     <th>Nombre | Producto</th>
+     <th>Tipo | Merma</th>
+     <th>Fecha | Ingreso</th>
+     <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let merma of mermas">
+      <td>{{ merma.codigo }}</td>
+      <td>{{ merma.nombre_producto }}</td>
+      <td>{{ merma.tipo_de_merma }}</td>
+      <td>{{ merma.fecha_ingreso }}</td>
+      <td><button class="btn-eliminar" (click)="merma.id ? confirmDelete(merma.id) : null">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>

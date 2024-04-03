@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<app-herramientas></app-herramientas>
+   <table class="tablita-prod">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Telefono</th>
+      <th>Correo</th>
+      <th>Producto</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let proveedor of proveedores">
+      <td>{{proveedor.id}}</td>
+      <td>{{proveedor.nombre}}</td>
+      <td>{{proveedor.telefono}}</td>
+      <td>{{proveedor.correo}}</td>
+      <td>{{proveedor.producto}}</td>
+      <td><button class="btn-eliminar" (click)="proveedor.id ? confirmDelete(proveedor.id) : null">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>
+</html>

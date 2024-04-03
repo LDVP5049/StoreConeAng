@@ -1,0 +1,39 @@
+<app-herramientas></app-herramientas>
+<div id="form-group">
+  <label for="seccion">Secciones:</label>
+  <select id="seccion" name="seccion" [(ngModel)]="seccionSeleccionada" (change)="getProductos()">
+    <option value="Todas">Todas</option>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+  </select>
+</div>
+<table class="tablita-prod">
+  <thead>
+    <tr>
+     <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Seccion</th>
+      <th>Proveedor</th>
+      <th>Descripcion</th>
+      <th>Imagen</th>
+      <th>Precio</th>
+      <th>Caducidad</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let producto of productos">
+      <td>{{ producto.nombre }}</td>
+      <td>{{ producto.codigo }}</td>
+      <td>{{ producto.seccion }}</td>
+      <td>{{ getProveedorNombre(producto.proveedorId) }}</td>
+      <td>{{ producto.descripcion }}</td>
+      <td><img [src]="producto.imagen" alt="Imagen del producto"></td>
+      <td>{{ producto.precio }}</td>
+      <td>{{ producto.caducidad }}</td>
+      <td><button class="btn-eliminar" (click)="producto.id ? confirmDelete(producto.id) : null">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>
