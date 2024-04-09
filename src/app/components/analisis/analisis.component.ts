@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Mermas } from '../../models/mermas';
 import { MermaService } from '../../services/mermas/merma.service';
+import { Color } from '@swimlane/ngx-charts';
 
 @Component({
   selector: 'app-analisis',
@@ -9,8 +10,20 @@ import { MermaService } from '../../services/mermas/merma.service';
 })
 export class AnalisisComponent implements OnInit {
   mermas: Mermas[] = [];
-  conteoMermas: { tipo: string; cantidad: number; color: string }[] = [];
+  conteoMermas: { name: string; value: number; color: string }[] = [];
 
+  // Datos para la gráfica
+  view: [number, number] = [700, 400];
+  gradient = false;
+  showLegend = true;
+  showXAxis = true;  // Añade esta línea
+  showYAxis = true;  // Añade esta línea
+  xAxisLabel = 'Producto';
+  yAxisLabel = 'Mermas';
+  colorScheme: any = {
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+  };
+  
   constructor(private mermasService: MermaService) {}
 
   ngOnInit(): void {
@@ -25,25 +38,28 @@ export class AnalisisComponent implements OnInit {
   }
 
   contarMermas(): void {
-    const tiposMerma = ['Robo', 'Caducidad', 'Defectuoso'];
-    this.conteoMermas = tiposMerma.map(tipo => {
-      const cantidad = this.mermas.filter(merma => merma.tipo_de_merma === tipo).length;
-      let color = '';
-      switch (tipo) {
-        case 'Robo':
-          color = '#ff6347'; // Rojo
-          break;
-        case 'Caducidad':
-          color = '#4682b4'; // Azul
-          break;
-        case 'Defectuoso':
-          color = '#32cd32'; // Verde
-          break;
-        default:
-          color = '#000000'; // Color por defecto
-          break;
-      }
-      return { tipo, cantidad, color };
+    this.conteoMermas = this.mermas.map(merma => {
+      const value = this.mermas.filter(m => m.nombre_producto === merma.nombre_producto).length;
+      const color = '#' + Math.floor(Math.random()*16777215).toString(16); // Genera un color aleatorio
+      return { name: merma.nombre_producto, value, color };
     });
   }
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
+
