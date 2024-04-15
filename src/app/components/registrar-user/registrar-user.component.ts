@@ -6,26 +6,32 @@ import { Usuario } from '../../models/usuarios';
 @Component({
   selector: 'app-registrar-user',
   templateUrl: './registrar-user.component.html',
-  styleUrl: './registrar-user.component.css'
+  styleUrls: ['./registrar-user.component.css']
 })
 export class RegistrarUserComponent {
   
   nuevoUsuario : Usuario = new Usuario();
 
   togglePasswordVisibility() {
-    const passwordInput = document.getElementById(
-      'password'
-    ) as HTMLInputElement;
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    const showPasswordIcon = document.getElementById('showPasswordIcon');
 
-    if (passwordInput.type === 'password') {
-      passwordInput.type = 'text';
-    } else {
-      passwordInput.type = 'password';
+    if (passwordInput && showPasswordIcon) {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+
+      showPasswordIcon.classList.add('rotate');
+
+      setTimeout(() => {
+        showPasswordIcon.classList.remove('rotate');
+      }, 500);
     }
   }
 
   constructor(private usuarioService : UsuariosService, private router: Router) {}
-
 
   crearUsuario(): void {
     if (this.formularioValido()) {

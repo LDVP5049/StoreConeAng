@@ -1,77 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Producto</title>
-</head>
-<app-herramientas></app-herramientas>
+<app-herramientas class="fixed-header"></app-herramientas>
 <body>
+  <div class="card">
     <h1>Registro de Producto</h1>
-    <div class="container">
-        <form (submit)="crearProducto()" class="small-form">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required [(ngModel)]="nuevoProducto.nombre">
-            </div>
-            <div class="form-group">
-                <label for="codigo">Código:</label>
-                <input type="text" id="codigo" name="codigo" required [(ngModel)]="nuevoProducto.codigo">
-            </div>
-            <div class="form-group">
-                <label for="seccion">Sección:</label>
-                <select id="seccion" name="seccion" required [(ngModel)]="nuevoProducto.seccion">
-                    <optgroup label="A">
-                        <option value="1A">1A</option>
-                        <option value="2A">2A</option>
-                        <option value="3A">3A</option>
-                        <option value="4A">4A</option>
-                    </optgroup>
-                    <optgroup label="B">
-                        <option value="1B">1B</option>
-                        <option value="2B">2B</option>
-                        <option value="3B">3B</option>
-                        <option value="4B">4B</option>
-                    </optgroup>
-                    <optgroup label="C">
-                        <option value="1C">1C</option>
-                        <option value="2C">2C</option>
-                        <option value="3C">3C</option>
-                        <option value="4C">4C</option>
-                    </optgroup>
-                    <optgroup label="D">
-                        <option value="1D">1D</option>
-                        <option value="2D">2D</option>
-                        <option value="3D">3D</option>
-                        <option value="4D">4D</option>
-                    </optgroup>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="seccion">Proveedor:</label>
-                <select id="seccion" name="seccion" required [(ngModel)]="nuevoProducto.proveedorId">
-                    <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombre}}</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="descripcion">Descripción:</label>
-                <textarea id="descripcion" name="descripcion" rows="4" required [(ngModel)]="nuevoProducto.descripcion"></textarea>
-            </div>
-            <div class="form-group">
-                <label for="imagen">Imagen:</label>
-                <input type="text" id="imagen" name="imagen" accept="image/*" required [(ngModel)]="nuevoProducto.imagen">
-            </div>
-            <div class="form-group">
-                <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" step="0.01" min="0" required [(ngModel)]="nuevoProducto.precio">
-            </div>
-            <div class="form-group">
-                <label for="caducidad">Caducidad:</label>
-                <input type="date" id="caducidad" name="caducidad" required [(ngModel)]="nuevoProducto.caducidad">
-            </div>
-            <button type="submit">Registrar Producto</button>
-        </form>
-    </div>
+    <form (submit)="crearProducto()" class="needs-validation" novalidate>
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nuevoProducto.nombre">
+      </div>
+      <div class="form-group">
+        <label for="codigo">Código:</label>
+        <input type="number" class="form-control" id="codigo" name="codigo" required [(ngModel)]="nuevoProducto.codigo">
+      </div>
+      <div class="form-group">
+        <label for="seccion">Sección:</label>
+        <select class="form-control" id="seccion" name="seccion" required [(ngModel)]="nuevoProducto.seccion">
+          <option value="1A">1A</option>
+          <option value="2A">2A</option>
+          <option value="3A">3A</option>
+          <option value="4A">4A</option>
+          <option value="1B">1B</option>
+          <option value="2B">2B</option>
+          <option value="3B">3B</option>
+          <option value="4B">4B</option>
+          <option value="1C">1C</option>
+          <option value="2C">2C</option>
+          <option value="3C">3C</option>
+          <option value="4C">4C</option>
+          <option value="1D">1D</option>
+          <option value="2D">2D</option>
+          <option value="3D">3D</option>
+          <option value="4D">4D</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="proveedorId">Proveedor:</label>
+        <select class="form-control" id="proveedorId" name="proveedorId" required [(ngModel)]="nuevoProducto.proveedorId">
+            <option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{proveedor.nombre}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="descripcion">Descripción:</label>
+        <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required [(ngModel)]="nuevoProducto.descripcion"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="imagen">Imagen:</label>
+        <input type="text" class="form-control" id="imagen" name="imagen" accept="image/*" required [(ngModel)]="nuevoProducto.imagen">
+      </div>
+      <div class="form-group">
+        <label for="precio">Precio:</label>
+        <input type="number" class="form-control" id="precio" name="precio" step="0.01" min="0" required [(ngModel)]="nuevoProducto.precio">
+      </div>
+      
+      <button class="btn btn-primary" type="submit">Registrar Producto</button>
+    </form>
+  </div>
 </body>
-</html>
+

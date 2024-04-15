@@ -1,39 +1,50 @@
-<app-herramientas></app-herramientas>
-<div id="form-group">
-  <label for="seccion">Secciones:</label>
-  <select id="seccion" name="seccion" [(ngModel)]="seccionSeleccionada" (change)="getProductos()">
-    <option value="Todas">Todas</option>
-    <option value="A">A</option>
-    <option value="B">B</option>
-    <option value="C">C</option>
-    <option value="D">D</option>
-  </select>
+<div class="main-container">
+  <app-herramientas class="fixed-header"></app-herramientas>
+  <div class="content-container">
+    <div class="d-flex justify-content-center align-items-center bg-light fade-in" style="margin-top: 60px;">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h2 class="text-center text-primary mb-4">Lista de Productos</h2>
+          <div id="form-group" class="mb-4">
+            <label for="seccion">Secciones:</label>
+            <select id="seccion" name="seccion" [(ngModel)]="seccionSeleccionada" (change)="getProductos()" class="form-control" style="max-width: 200px;">
+              <option value="Todas">Todas</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+            </select>
+          </div>
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Codigo</th>
+                <th>Seccion</th>
+                <th>Proveedor</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Caducidad</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of productos" class="fade-in-row">
+                <td data-th="Nombre">{{ producto.nombre }}</td>
+                <td data-th="Codigo">{{ producto.codigo }}</td>
+                <td data-th="Seccion">{{ producto.seccion }}</td>
+                <td data-th="Proveedor">{{ getProveedorNombre(producto.proveedorId) }}</td>
+                <td data-th="Descripcion">{{ producto.descripcion }}</td>
+                <td data-th="Imagen"><img [src]="producto.imagen" alt="Imagen del producto" class="img-thumbnail" style="height: 60px;"></td>
+                <td data-th="Precio">{{ producto.precio }}</td>
+                <td data-th="Caducidad">{{ producto.caducidad }}</td>
+                <td data-th="Acciones"><button class="btn btn-danger" (click)="producto.id ? confirmDelete(producto.id) : null">Eliminar</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<table class="tablita-prod">
-  <thead>
-    <tr>
-     <th>Nombre</th>
-      <th>Codigo</th>
-      <th>Seccion</th>
-      <th>Proveedor</th>
-      <th>Descripcion</th>
-      <th>Imagen</th>
-      <th>Precio</th>
-      <th>Caducidad</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let producto of productos">
-      <td>{{ producto.nombre }}</td>
-      <td>{{ producto.codigo }}</td>
-      <td>{{ producto.seccion }}</td>
-      <td>{{ getProveedorNombre(producto.proveedorId) }}</td>
-      <td>{{ producto.descripcion }}</td>
-      <td><img [src]="producto.imagen" alt="Imagen del producto"></td>
-      <td>{{ producto.precio }}</td>
-      <td>{{ producto.caducidad }}</td>
-      <td><button class="btn-eliminar" (click)="producto.id ? confirmDelete(producto.id) : null">Eliminar</button></td>
-    </tr>
-  </tbody>
-</table>

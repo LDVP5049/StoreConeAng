@@ -64,6 +64,12 @@ export class ProdListComponent {
   //ELIMINA LOS PRODUCTOS
   confirmDelete(productId: string): void {
     if (productId) {
+      const productRow = document.getElementById(productId);
+
+      if (productRow) {
+        productRow.classList.add('fade-in-row');
+      }
+
       this.productoService.deleteProducto(productId).subscribe((response) => {
         if (response && response.success) {
           this.productos = this.productos.filter(
@@ -71,6 +77,10 @@ export class ProdListComponent {
           );
           console.log('Producto eliminado exitosamente!');
           this.getProductos();
+
+          if (productRow) {
+            productRow.classList.remove('fade-in-row');
+          }
         } else {
           console.log('Error al eliminar el producto.');
           this.getProductos();

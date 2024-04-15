@@ -42,7 +42,7 @@ input[type="password"] {
   padding: 15px; /* Aumentamos el relleno */
   border: 1px solid #ccc;
   border-radius: 8px; /* Aumentamos el radio de borde */
-  transition: border-color 0.3s ease;
+  transition: border-color 0.7s ease;
 }
 
 input[type="text"]:focus,
@@ -86,4 +86,22 @@ button[type="submit"]:hover {
 form {
   max-width: 100%;
   box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+@keyframes rotate {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+.rotate {
+  animation: rotate 0.5s;
 }

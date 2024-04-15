@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { Proveedores } from '../../models/proveedores';
 import { ProveedorService } from '../../services/proveedores/proveedor.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proveedor-list',
   templateUrl: './proveedor-list.component.html',
-  styleUrl: './proveedor-list.component.css'
+  styleUrls: ['./proveedor-list.component.css']
 })
 export class ProveedorListComponent {
 
   proveedores: Proveedores[]=[];
   proveedorIdToDelete: string | null = null;
 
-  constructor(private proveedorService: ProveedorService) { }
+  constructor(private proveedorService: ProveedorService, private router: Router) { }
 
   ngOnInit(): void{
     this.getProveedores();
@@ -37,5 +38,9 @@ export class ProveedorListComponent {
         }
       )
     }
+  }
+
+  navigateToEdit(proveedorId: string): void {
+    this.router.navigate(['/editarProveedor', proveedorId]);
   }
 }

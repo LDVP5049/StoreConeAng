@@ -11,14 +11,21 @@ export class LoginComponent {
   constructor(private router: Router, private usuariosService: UsuariosService) {}
 
   togglePasswordVisibility() {
-    const passwordInput = document.getElementById(
-      'password'
-    ) as HTMLInputElement;
+    const passwordInput = document.getElementById('password') as HTMLInputElement;
+    const showPasswordIcon = document.getElementById('showPasswordIcon');
 
-    if (passwordInput.type === 'password') {
-      passwordInput.type = 'text';
-    } else {
-      passwordInput.type = 'password';
+    if (passwordInput && showPasswordIcon) {
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+      }
+
+      showPasswordIcon.classList.add('rotate');
+
+      setTimeout(() => {
+        showPasswordIcon.classList.remove('rotate');
+      }, 500);
     }
   }
 

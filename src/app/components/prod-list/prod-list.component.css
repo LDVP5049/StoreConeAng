@@ -92,3 +92,67 @@ img {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 20px;
 }
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.fade-in {
+  animation: fadeIn 1s;
+}
+
+@keyframes fadeInRow {
+  0% {opacity: 0; transform: translateY(20px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+.fade-in-row {
+  animation: fadeInRow 0.5s;
+}
+
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-container {
+  margin-top: 60px; /* Ajusta este valor según el tamaño de tu menú */
+}
+
+/* El resto de tu CSS va aquí */
+.fixed-header {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  z-index: 10;
+  background-color: #fff; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width: 600px) {
+  table {
+    width: 100%;
+  }
+  thead {
+    display: none;
+  }
+  tr:nth-of-type(2n) {
+    background-color: unset;
+  }
+  tr td:first-child {
+    background: #f2f2f2;
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+  tbody td {
+    display: block;
+    text-align: right;
+  }
+  tbody td:before {
+    content: attr(data-th);
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}

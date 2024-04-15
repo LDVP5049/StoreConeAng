@@ -3,10 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-herramientas',
   templateUrl: './herramientas.component.html',
-  styleUrl: './herramientas.component.css'
+  styleUrls: ['./herramientas.component.css']
 })
 export class HerramientasComponent {
-
-
-  //ESTO ES SOLO LA TOOLBAR
+  isCollapsed = false; 
 }

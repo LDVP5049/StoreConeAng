@@ -21,7 +21,7 @@ import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/
 import { FormsModule } from '@angular/forms';
 import { RegistrarUserComponent } from './components/registrar-user/registrar-user.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { EditarProveedorComponent } from './components/editar-proveedor/editar-proveedor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     RegistrarProveComponent,
     AnalisisComponent,
     MermasListComponent,
-    RegistrarUserComponent
+    RegistrarUserComponent,
+    EditarProveedorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,31 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<app-herramientas></app-herramientas>
-   <table class="tablita-prod">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>
-      <th>Telefono</th>
-      <th>Correo</th>
-      <th>Producto</th>
-      <th>Acciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let proveedor of proveedores">
-      <td>{{proveedor.id}}</td>
-      <td>{{proveedor.nombre}}</td>
-      <td>{{proveedor.telefono}}</td>
-      <td>{{proveedor.correo}}</td>
-      <td>{{proveedor.producto}}</td>
-      <td><button class="btn-eliminar" (click)="proveedor.id ? confirmDelete(proveedor.id) : null">Eliminar</button></td>
-    </tr>
-  </tbody>
-</table>
-</html>
+<app-herramientas class="fixed-header"></app-herramientas>
+><br>
+<br>
+<br>
+
+<div class="container">
+  <h1 class="text-center my-4">Lista de Proveedores</h1>
+  <table class="tablita-prod table table-striped table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th>Producto</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedores">
+        <td data-th="ID">{{proveedor.id}}</td>
+        <td data-th="Nombre">{{proveedor.nombre}}</td>
+        <td data-th="Telefono">{{proveedor.telefono}}</td>
+        <td data-th="Correo">{{proveedor.correo}}</td>
+        <td data-th="Producto">{{proveedor.producto}}</td>
+        <td data-th="Acciones">
+          <button class="btn-eliminar btn btn-danger" (click)="proveedor.id ? confirmDelete(proveedor.id) : null">Eliminar</button>
+          <button class="btn-editar btn btn-primary" (click)="proveedor.id ? navigateToEdit(proveedor.id) : null">Editar</button>
+        </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

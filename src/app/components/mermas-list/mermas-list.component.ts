@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Mermas } from '../../models/mermas';
 import { MermaService } from '../../services/mermas/merma.service';
 
@@ -7,7 +7,8 @@ import { MermaService } from '../../services/mermas/merma.service';
   templateUrl: './mermas-list.component.html',
   styleUrl: './mermas-list.component.css'
 })
-export class MermasListComponent {
+export class MermasListComponent implements OnInit, AfterViewInit {
+  @ViewChild('myTable') myTable!: ElementRef;
 
   mermas: Mermas[] = [];
   mermaIdToDelete: string | null = null;
@@ -17,6 +18,14 @@ export class MermasListComponent {
   ngOnInit(): void {
     this.getMermas();
   } 
+
+  ngAfterViewInit(): void {
+    this.myTable.nativeElement.style.opacity = 0;
+    setTimeout(() => {
+      this.myTable.nativeElement.style.transition = 'opacity 1s';
+      this.myTable.nativeElement.style.opacity = 1;
+    }, 0);
+  }
 
   getMermas(): void {
     this.mermaService.getMermas().subscribe((result: Mermas[]) => (this.mermas = result));

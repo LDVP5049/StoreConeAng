@@ -10,7 +10,7 @@ import { AnalisisComponent } from './components/analisis/analisis.component';
 import { MermasListComponent } from './components/mermas-list/mermas-list.component';
 import { RegistrarMermasComponent } from './components/registrar-mermas/registrar-mermas.component';
 import { RegistrarUserComponent } from './components/registrar-user/registrar-user.component';
-
+import { EditarProveedorComponent } from './components/editar-proveedor/editar-proveedor.component';
 
 
 const routes: Routes = [
@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'listaMer', component: MermasListComponent},
   { path: 'registrarMer', component: RegistrarMermasComponent},
   { path: 'registraruser', component: RegistrarUserComponent},
+  { path: 'editarProveedor/:id', component: EditarProveedorComponent },
 
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];

@@ -1,14 +1,13 @@
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CANTIDAD | MERMAS</title>
-</head>
-<app-herramientas></app-herramientas>
-<body>
-    <div *ngIf="conteoMermas.length > 0; else loading">
-        <ngx-charts-bar-vertical
-  [view]="view"
+<body class="bg-gradient">
+  <app-herramientas></app-herramientas>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card p-4 mt-5 mb-5">
+          <h1 class="text-center mb-4">Análisis de Productos Mermados</h1>
+          <p class="text-center mb-4">Un producto mermado se refiere a cualquier producto que ha disminuido en valor debido a daños, deterioro, obsolescencia u otras causas. Este análisis proporciona una visión detallada de dichos productos.</p>
+          <div *ngIf="conteoMermas.length > 0; else loading" class="chart-container">
+            <ngx-charts-bar-vertical
   [scheme]="colorScheme"
   [results]="conteoMermas"
   [gradient]="gradient"
@@ -18,16 +17,16 @@
   [showXAxisLabel]="showXAxis"
   [showYAxisLabel]="showYAxis"
   [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel">
+  [yAxisLabel]="yAxisLabel"
+  [legendTitle]="'Indice'">  // Añade esta línea
 </ngx-charts-bar-vertical>
 
-      
-      
-
+          </div>
+          <ng-template #loading>
+            <p class="text-center">Cargando datos...</p>
+          </ng-template>
+        </div>
       </div>
-      
-      <ng-template #loading>
-        <p>Cargando datos...</p>
-      </ng-template>
-      
+    </div>
+  </div>
 </body>

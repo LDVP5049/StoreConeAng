@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Proveedores } from '../../models/proveedores';
 import { Observable, throwError, of } from 'rxjs';
 import { switchMap } from 'rxjs';
@@ -33,5 +33,30 @@ export class ProveedorService {
       const url= `${environment.apiUrl}/${this.urlEliminar}${id}`;
       return this.http.delete<any>(url);
     }
+ // ACTUALIZAR UN PROVEEDOR
+public updateProveedor(proveedor: Proveedores): Observable<any> {
+  if (proveedor.id) {
+    const url = `${environment.apiUrl}/Proveedor/Update`;
+    const params = new HttpParams().set('id', proveedor.id);
+    return this.http.put<any>(url, proveedor, { params });
+  } else {
+    // Maneja el caso en que proveedor.id es undefined
+    console.error('El id del proveedor es undefined');
+    return throwError('El id del proveedor es undefined');
+  }
+}
+
+
+
+
+
+
+//OBTENER UN PROVEEDOR
+public getProveedor(id: string): Observable<Proveedores> {
+  const url= `${environment.apiUrl}/Proveedor/${id}`;
+  return this.http.get<Proveedores>(url);
+}
+
+
 
 }
