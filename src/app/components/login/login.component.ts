@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsuariosService } from '../../services/usuarios/usuarios.service';
 
 @Component({
   selector: 'app-login',
@@ -8,37 +7,13 @@ import { UsuariosService } from '../../services/usuarios/usuarios.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  constructor(private router: Router, private usuariosService: UsuariosService) {}
+  constructor(private router: Router) {}
 
-  togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password') as HTMLInputElement;
-    const showPasswordIcon = document.getElementById('showPasswordIcon');
-
-    if (passwordInput && showPasswordIcon) {
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-      } else {
-        passwordInput.type = 'password';
-      }
-
-      showPasswordIcon.classList.add('rotate');
-
-      setTimeout(() => {
-        showPasswordIcon.classList.remove('rotate');
-      }, 500);
-    }
-  }
-
-  iniciarSesion(usuario: string, contrasena: string) {
-    this.usuariosService.iniciarSesion(usuario, contrasena).subscribe(
-      (usuario) => {
-        this.router.navigate(['/inicio']);
-        this.router.navigate(['/listaP']);
-      },
-      (error) => {
-        alert('Usuario o contraseña incorrectos');
-      }
-    );
+  // Este método solo realiza la navegación, sin necesidad de usuario o contraseña.
+  iniciarSesion() {
+    // Aquí puedes hacer alguna acción si lo necesitas (por ejemplo, guardar el estado de sesión)
+    this.router.navigate(['/inicio']);  // Redirige a la página principal (o a donde quieras)
+    this.router.navigate(['/listaP']);  // Si tienes otra página a la que redirigir después
   }
 
   navigateToRegistrarUser() {
